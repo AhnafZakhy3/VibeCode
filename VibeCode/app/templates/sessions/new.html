@@ -1,0 +1,19 @@
+{% extends "base.html" %}
+{% block content %}
+	<h2>Log a Session</h2>
+	<form method="post">
+		<label>Partner<br>
+			<select name="partner_id" required>
+				{% if partner %}
+					<option value="{{ partner.id }}">{{ partner.name }}</option>
+				{% endif %}
+				{% for u in users %}
+					<option value="{{ u.id }}">{{ u.name }}</option>
+				{% endfor %}
+			</select>
+		</label><br>
+		<label>Skill<br><input type="text" name="skill" value="{{ skill }}" required></label><br>
+		<label>Notes<br><textarea name="notes"></textarea></label><br>
+		<button type="submit">Save</button>
+	</form>
+{% endblock %}

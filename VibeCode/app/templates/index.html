@@ -1,0 +1,10 @@
+{% extends "base.html" %}
+{% block content %}
+	<h1>Welcome to SkillSwap</h1>
+	{% if user %}
+		<p>Hello, {{ user.name }}.</p>
+		<p>Start by exploring the <a href="/skills">catalog</a> or checking your <a href="/match">matches</a>.</p>
+	{% else %}
+		<p>Trade knowledge, not money. <a href="/register">Create an account</a> or <a href="/login">log in</a>.</p>
+	{% endif %}
+{% endblock %}

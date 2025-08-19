@@ -1,0 +1,16 @@
+{% extends "base.html" %}
+{% block content %}
+	<h2>Sessions</h2>
+	<p><a href="/sessions/new">Log a new session</a></p>
+	<ul>
+		{% for s in sessions %}
+			{% set other = s.user_b_id if s.user_a_id == user.id else s.user_a_id %}
+			<li>
+				{{ s.occurred_at.strftime('%Y-%m-%d') }} – with <a href="/users/{{ other }}">User #{{ other }}</a> – {{ s.skill }}
+				<div class="notes">{{ s.notes }}</div>
+			</li>
+		{% else %}
+			<li>No sessions logged yet.</li>
+		{% endfor %}
+	</ul>
+{% endblock %}

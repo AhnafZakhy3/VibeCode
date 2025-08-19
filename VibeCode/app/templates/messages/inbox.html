@@ -1,0 +1,16 @@
+{% extends "base.html" %}
+{% block content %}
+	<h2>Messages</h2>
+	<ul>
+		{% for m in messages %}
+			<li>
+				{% set peer = m.sender if m.sender_id != user.id else m.receiver %}
+				<a href="/messages/{{ peer.id }}">Conversation with {{ peer.name }}</a>
+				<small>– {{ m.created_at.strftime('%Y-%m-%d %H:%M') }}</small>
+				<div class="preview">{{ m.content[:100] }}</div>
+			</li>
+		{% else %}
+			<li>No messages yet.</li>
+		{% endfor %}
+	</ul>
+{% endblock %}

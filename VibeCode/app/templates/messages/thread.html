@@ -1,0 +1,19 @@
+{% extends "base.html" %}
+{% block content %}
+	<h2>Conversation with {{ peer.name }}</h2>
+	{% if error %}<p class="error">{{ error }}</p>{% endif %}
+	<div class="thread">
+		{% for m in messages %}
+			<div class="msg {{ 'mine' if m.sender_id == user.id else '' }}">
+				<div class="meta">{{ m.created_at.strftime('%Y-%m-%d %H:%M') }} – {{ 'You' if m.sender_id == user.id else peer.name }}</div>
+				<div class="body">{{ m.content }}</div>
+			</div>
+		{% else %}
+			<p>No messages yet. Say hi!</p>
+		{% endfor %}
+	</div>
+	<form method="post" class="composer">
+		<textarea name="content" rows="3" required></textarea>
+		<button type="submit">Send</button>
+	</form>
+{% endblock %}

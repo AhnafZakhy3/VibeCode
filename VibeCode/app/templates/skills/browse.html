@@ -1,0 +1,17 @@
+{% extends "base.html" %}
+{% block content %}
+	<h2>Skill Catalog</h2>
+	<form method="get">
+		<input type="text" name="q" placeholder="Search by name, location, skills" value="{{ q }}">
+		<button type="submit">Search</button>
+	</form>
+	<ul>
+		{% for u in users %}
+			<li>
+				<a href="/users/{{ u.id }}">{{ u.name }}</a> – offers: {{ u.skills_offered or '—' }}; wants: {{ u.skills_wanted or '—' }} ({{ u.location or '—' }})
+			</li>
+		{% else %}
+			<li>No users found.</li>
+		{% endfor %}
+	</ul>
+{% endblock %}

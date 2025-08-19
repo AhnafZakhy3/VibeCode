@@ -1,0 +1,22 @@
+{% extends "base.html" %}
+{% block content %}
+	<h2>{{ profile.name }}</h2>
+	<p><strong>Location:</strong> {{ profile.location or '—' }}</p>
+	<p><strong>Bio:</strong><br>{{ profile.bio or '—' }}</p>
+	<p><strong>Offers:</strong> {{ profile.skills_offered or '—' }}</p>
+	<p><strong>Wants:</strong> {{ profile.skills_wanted or '—' }}</p>
+	{% if avg_rating %}
+		<p><strong>Avg Rating:</strong> {{ '%.1f' % avg_rating }} / 5</p>
+	{% else %}
+		<p><strong>Avg Rating:</strong> —</p>
+	{% endif %}
+	<p><a href="/messages/{{ profile.id }}">Message</a> · <a href="/ratings/new?for_user={{ profile.id }}">Rate</a></p>
+	<h3>Ratings</h3>
+	<ul>
+		{% for r in ratings %}
+			<li>{{ r.score }}/5 – {{ r.comment }} ({{ r.created_at.strftime('%Y-%m-%d') }})</li>
+		{% else %}
+			<li>No ratings yet.</li>
+		{% endfor %}
+	</ul>
+{% endblock %}

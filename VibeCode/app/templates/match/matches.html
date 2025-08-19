@@ -1,0 +1,16 @@
+{% extends "base.html" %}
+{% block content %}
+	<h2>Your Matches</h2>
+	<ul>
+		{% for m in matches %}
+			<li>
+				<a href="/users/{{ m.user.id }}">{{ m.user.name }}</a>
+				<div>They offer: {{ ', '.join(m.offer_match) if m.offer_match else '—' }}</div>
+				<div>They want: {{ ', '.join(m.want_match) if m.want_match else '—' }}</div>
+				<div><a href="/messages/{{ m.user.id }}">Message</a> · <a href="/sessions/new?with_user={{ m.user.id }}&skill={{ (m.offer_match[0] if m.offer_match else (m.want_match[0] if m.want_match else '')) | urlencode }}">Log Session</a></div>
+			</li>
+		{% else %}
+			<li>No matches found. Add more skills in your <a href="/profile">profile</a>.</li>
+		{% endfor %}
+	</ul>
+{% endblock %}

@@ -1,0 +1,13 @@
+body { font-family: system-ui, -apple-system, Segoe UI, Roboto, sans-serif; margin: 0; padding: 0; background: #f8fafc; color: #0f172a; }
+.container { max-width: 900px; margin: 24px auto; padding: 0 16px; }
+.nav { display: flex; gap: 12px; padding: 12px 16px; background: #0f172a; }
+.nav a { color: #e2e8f0; text-decoration: none; }
+h1, h2, h3 { margin: 16px 0; }
+form input, form textarea, form select { width: 100%; max-width: 520px; padding: 8px; margin: 6px 0 12px; }
+button { background: #2563eb; color: white; border: 0; padding: 8px 12px; border-radius: 6px; cursor: pointer; }
+.error { color: #b91c1c; }
+.success { color: #065f46; }
+.thread { display: flex; flex-direction: column; gap: 8px; margin: 12px 0; background: #fff; padding: 12px; border-radius: 8px; }
+.msg { padding: 8px 10px; background: #e5e7eb; border-radius: 8px; max-width: 70%; }
+.msg.mine { align-self: flex-end; background: #bfdbfe; }
+.preview { color: #475569; font-size: 0.9em; }

@@ -1,0 +1,19 @@
+{% extends "base.html" %}
+{% block content %}
+	<h2>Leave a Rating</h2>
+	<form method="post">
+		<label>User<br>
+			<select name="ratee_id" required>
+				{% if target %}
+					<option value="{{ target.id }}">{{ target.name }}</option>
+				{% endif %}
+				{% for u in users %}
+					<option value="{{ u.id }}">{{ u.name }}</option>
+				{% endfor %}
+			</select>
+		</label><br>
+		<label>Score (1-5)<br><input type="number" name="score" min="1" max="5" value="5" required></label><br>
+		<label>Comment<br><textarea name="comment"></textarea></label><br>
+		<button type="submit">Submit</button>
+	</form>
+{% endblock %}
